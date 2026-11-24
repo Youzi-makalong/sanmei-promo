@@ -1,0 +1,291 @@
+/* 《三昧江湖》宣传页 — 设计 token 源自 ui-ux-pro-max 检索 + 封面取色验配
+   墨色 #171717 系（colors.csv 验配行）/ 暗金 #A16207 / 字体 Noto Serif TC 同族（聚合命中，简体用 SC） */
+:root {
+  --ink: #1c2126;          /* 墨色：标题与正文 */
+  --ink-blue: #2e4055;     /* 靛蓝墨灰：取自封面道袍与远山 */
+  --ink-blue-deep: #1d2a3a;
+  --gold: #a16207;         /* 暗金：点缀与强调 */
+  --gold-bright: #c9962e;
+  --paper: #f7f3ea;        /* 宣纸米白：页面底 */
+  --paper-alt: #efe9da;    /* 宣纸深一阶：人物区底 */
+  --paper-track: #e6dfca;  /* 宣纸再深一阶：进度槽 */
+  --paper-card: #fffdf7;
+  --seal: #a93226;         /* 朱红：印章与关键标签 */
+  --muted: #5d6656;
+  --muted-on-dark: #b9c2cc;
+  --border: #e0d8c3;
+  --serif: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+  --sans: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
+
+body {
+  font-family: var(--sans);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; }
+
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* ---------- Hero ---------- */
+.hero {
+  background: linear-gradient(160deg, var(--ink-blue-deep) 0%, var(--ink-blue) 55%, #3a5069 100%);
+  color: #f2ede1;
+  overflow: hidden;
+}
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 56px;
+  align-items: center;
+  padding: 72px 24px 80px;
+}
+.hero-kicker {
+  font-family: var(--serif);
+  letter-spacing: 0.5em;
+  font-size: 13px;
+  color: var(--gold-bright);
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(56px, 9vw, 104px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.08em;
+  margin-bottom: 24px;
+}
+.hero-hook {
+  font-family: var(--serif);
+  font-size: clamp(18px, 2.4vw, 23px);
+  line-height: 1.9;
+  color: #e8e2d2;
+  max-width: 34em;
+}
+.hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+.tag {
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  border: 1px solid rgba(201, 150, 46, 0.55);
+  color: #ecd9a8;
+  padding: 5px 14px;
+  border-radius: 999px;
+}
+.tag.seal {
+  background: var(--seal);
+  border-color: var(--seal);
+  color: #fff;
+  font-family: var(--serif);
+}
+.hero-cover { display: flex; justify-content: center; }
+.hero-cover img {
+  width: min(400px, 100%);
+  border-radius: 6px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(201, 150, 46, 0.35);
+}
+
+/* ---------- Sections ---------- */
+section.block { padding: 80px 0; }
+.sec-head { text-align: center; margin-bottom: 48px; }
+.sec-head .sec-kicker {
+  font-family: var(--serif);
+  color: var(--gold);
+  letter-spacing: 0.45em;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+.sec-head h2 {
+  font-family: var(--serif);
+  font-size: clamp(30px, 4.5vw, 42px);
+  letter-spacing: 0.12em;
+}
+.sec-head .rule {
+  width: 56px; height: 2px;
+  background: var(--seal);
+  margin: 18px auto 0;
+}
+
+/* 简介 */
+.intro {
+  max-width: 46em;
+  margin: 0 auto;
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 2.05;
+}
+.intro p + p { margin-top: 1.2em; }
+.intro .first-line {
+  text-align: center;
+  font-size: 22px;
+  letter-spacing: 0.06em;
+  margin-bottom: 1.4em;
+}
+.intro strong { color: var(--ink-blue); }
+
+/* ---------- 人物 ---------- */
+.chars { background: var(--paper-alt); }
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.char-card {
+  background: var(--paper-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.char-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(28, 33, 38, 0.14);
+}
+.char-card .photo { aspect-ratio: 4 / 4.6; overflow: hidden; position: relative; background: var(--ink-blue-deep); }
+.char-card .photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+/* 六张人物图统一罩光：上部暗金微光、下部墨色渐沉，写实照片成一个视觉系统 */
+.char-card .photo::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(161, 98, 7, 0.07) 0%, rgba(161, 98, 7, 0) 34%, rgba(28, 33, 38, 0) 72%, rgba(28, 33, 38, 0.16) 100%);
+  box-shadow: inset 0 0 0 1px rgba(161, 98, 7, 0.22);
+  pointer-events: none;
+}
+.char-body { padding: 20px 22px 24px; }
+.char-name {
+  font-family: var(--serif);
+  font-size: 24px;
+  letter-spacing: 0.14em;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.char-role { font-size: 13px; color: var(--gold); letter-spacing: 0.08em; font-family: var(--sans); }
+.char-desc { margin-top: 10px; font-size: 15px; line-height: 1.8; color: #3c434a; }
+.char-card.villain .char-name { color: var(--seal); }
+
+/* ---------- 章节与进度 ---------- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  max-width: 860px;
+  margin: 0 auto 48px;
+  text-align: center;
+}
+.stat .num {
+  font-family: var(--serif);
+  font-size: clamp(34px, 5vw, 48px);
+  color: var(--ink-blue);
+  line-height: 1.2;
+}
+.stat .num em { font-style: normal; color: var(--seal); }
+.stat .label { font-size: 14px; color: var(--muted); letter-spacing: 0.15em; margin-top: 6px; }
+.progress {
+  max-width: 860px;
+  margin: 0 auto 56px;
+}
+.progress-meta {
+  display: flex; justify-content: space-between;
+  font-size: 14px; color: var(--muted);
+  margin-bottom: 10px;
+}
+.progress-bar {
+  height: 10px;
+  background: var(--paper-track);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.progress-bar i {
+  display: block; height: 100%;
+  width: 35.7%; /* 10 / 28 章 */
+  background: linear-gradient(90deg, var(--ink-blue), var(--gold));
+  border-radius: 999px;
+}
+.chapter-list {
+  max-width: 860px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 48px;
+}
+.chapter {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 13px 4px;
+  border-bottom: 1px dashed var(--border);
+}
+.chapter .no {
+  font-family: var(--serif);
+  color: var(--gold);
+  font-size: 15px;
+  min-width: 3.2em;
+  letter-spacing: 0.05em;
+}
+.chapter .name { font-family: var(--serif); font-size: 19px; letter-spacing: 0.2em; }
+.chapter .vol { margin-left: auto; font-size: 12px; color: var(--muted); letter-spacing: 0.1em; }
+.chapter.next { opacity: 0.55; }
+.chapter.next .name { letter-spacing: 0.08em; font-size: 16px; }
+
+/* ---------- 连载信息 ---------- */
+.serial { background: var(--ink-blue-deep); color: #e8e2d2; }
+.serial .sec-head h2 { color: #f2ede1; }
+.serial-box {
+  max-width: 46em;
+  margin: 0 auto;
+  font-size: 16.5px;
+  line-height: 2;
+}
+.serial-box p + p { margin-top: 1em; }
+.serial-box .hl { color: var(--gold-bright); font-family: var(--serif); }
+.serial-status {
+  display: inline-block;
+  background: var(--seal);
+  color: #fff;
+  font-family: var(--serif);
+  letter-spacing: 0.2em;
+  padding: 4px 16px;
+  border-radius: 3px;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+/* ---------- 页脚 ---------- */
+footer {
+  background: var(--ink-blue-deep);
+  color: var(--muted-on-dark);
+  border-top: 1px solid rgba(201, 150, 46, 0.3);
+  padding: 36px 0 44px;
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 0.12em;
+}
+footer .f-title { font-family: var(--serif); font-size: 18px; color: #e8e2d2; letter-spacing: 0.4em; margin-bottom: 8px; }
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 1023px) {
+  .char-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 767px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 40px; padding: 52px 20px 60px; text-align: center; }
+  .hero-hook { margin: 0 auto; }
+  .hero-tags { justify-content: center; }
+  .hero-cover img { width: min(300px, 82vw); }
+  section.block { padding: 56px 0; }
+  .char-grid { grid-template-columns: 1fr; }
+  .chapter-list { grid-template-columns: 1fr; }
+  .stats { gap: 16px; }
+  .intro { font-size: 16.5px; }
+}
